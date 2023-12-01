@@ -3,7 +3,7 @@ from pytube import YouTube
 from pathlib import Path
 
 
-desktop_dir = Path("C:\\Users\\chris\\Desktop")
+desktop_dir_win_from_wsl = Path("/mnt/c/Users/chris/Desktop")
 
 def get_target():
     """get url of video to download from user terminal input"""
@@ -35,7 +35,7 @@ def download_video(video_url, itag):
     video = youtube.streams.first()
     print(f"downloading video with itag {itag}")
     try:
-        video.download(desktop_dir)   # path to save video to; currently same directory
+        video.download(desktop_dir_win_from_wsl)   # path to save video to; currently same directory
     except Exception:
         print(Exception)
 
@@ -44,7 +44,7 @@ def download_video(video_url, itag):
 
 if __name__ == "__main__":
 
-    print("Desktop is seen as directory: ", Path.is_dir(desktop_dir))
+    print("Desktop is seen as directory: ", Path.is_dir(desktop_dir_win_from_wsl))
 
     url = get_target()
 
